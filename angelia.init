@@ -22,7 +22,11 @@ fi
 
 start() {
 	echo -n $"Starting $desc ($prog): "
-	daemon --check=$prog /usr/sbin/${prog} --config ${CONFFILE}
+	touch /var/run/angelia-spoold.pid
+	chown nagios:nagios /var/run/angelia-spoold.pid
+	chown -R nagios:nagios /var/log/angelia
+	umask 0002
+	daemon --user=nagios --check=$prog /usr/sbin/${prog} --config ${CONFFILE}
 	RETVAL=$?
 	echo
 	[ $RETVAL -eq 0 ] && touch /var/lock/subsys/$prog
