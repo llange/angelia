@@ -50,7 +50,6 @@ end
 begin
   Angelia::Config.new(conffile, false)
 
-  Angelia::Spool.createmsg Angelia::Message.new(recipient, message, subject, "nagios-#{mode}")
   Angelia::Spool.createmsg Angelia::Message.new(recipient, message, subject, "#{backend}-#{mode}")
 
 rescue Angelia::CorruptMessage => e
