@@ -1,6 +1,6 @@
 # Rakefile to build a project using HUDSON
 
-require 'rake/rdoctask'
+require 'rdoc/task'
 require 'rake/clean'
 
 PROJ_NAME = "angelia"
